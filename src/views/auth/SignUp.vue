@@ -39,7 +39,8 @@
 </template>
 
 <script>
-import { validateFormData } from '@/helpers/validation/form';
+import { mapState, mapActions } from 'vuex'
+import { validateFormData, extractFormData } from '@/helpers/validation/form';
 
 export default {
   data() {
@@ -108,12 +109,25 @@ export default {
       },
     };
   },
+  computed: mapState({
+    isError: state => state.auth.isSignUpError,
+  }),
   methods: {
-    submitForm(e) {
+    ...mapActions({
+      signUpAction: 'auth/signUp',
+    }),
+    async submitForm(e) {
       e.preventDefault();
       if (this.validateForm()) {
-        console.log('valid data');
+        const isUserCreated = await this.signUp();
+        if (isUserCreated) {
+          this.$router.push('/sign-in');
+        }
       }
+    },
+    signUp() {
+      const formData = extractFormData(this.form.fields);
+      return this.signUpAction(formData);
     },
     validateForm() {
       this.form.formValidation = validateFormData(this.form);

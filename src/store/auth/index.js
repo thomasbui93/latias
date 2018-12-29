@@ -4,7 +4,10 @@ import mutations from './mutations';
 const state = {
   isAuthenticated: false,
   isRequestingAuthentication: false,
-  isError: false,
+  isSignInError: false,
+  isUserCreated: false,
+  isCreatingUser: false,
+  isSignUpError: false
 };
 
 export default {

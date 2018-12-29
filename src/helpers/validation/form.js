@@ -24,7 +24,7 @@ export const validate = (value, pattern, callback) => {
 export const validateFormData = (form) => {
   let isValid = true;
   form.fields.forEach((field) => {
-    const callback = { field };
+    const { callback } = field;
     if (typeof callback === 'undefined') {
       field.isValid = validate(field.value, field.pattern);
     } else if (typeof callback === 'function') {
@@ -38,3 +38,11 @@ export const validateFormData = (form) => {
   form.formValidation = isValid;
   return isValid;
 };
+
+export const extractFormData = (fields) => {
+  const formData = {};
+  fields.forEach((field) => {
+    formData[field.name] = field.value;
+  })
+  return formData;
+}

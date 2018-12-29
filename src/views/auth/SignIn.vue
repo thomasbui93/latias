@@ -49,7 +49,7 @@
 
 <script>
 import { mapActions, mapState } from 'vuex';
-import { validateFormData } from '@/helpers/validation/form';
+import { validateFormData, extractFormData } from '@/helpers/validation/form';
 
 export default {
   data() {
@@ -57,7 +57,7 @@ export default {
       form: {
         fields: [
           {
-            name: 'Email',
+            name: 'email',
             label: 'Your email',
             value: '',
             isValid: true,
@@ -70,9 +70,9 @@ export default {
             label: 'Password',
             value: '',
             isValid: true,
-            pattern: 'password',
+            pattern: 'required',
             type: 'password',
-            errorMessage: 'The given password is too weak.',
+            errorMessage: 'This is a required field.',
           },
         ],
         formValidation: true,
@@ -80,7 +80,7 @@ export default {
     };
   },
   computed: mapState({
-    isError: state => state.auth.isError,
+    isError: state => state.auth.isSignInError,
   }),
   methods: {
     ...mapActions({
@@ -96,7 +96,8 @@ export default {
       }
     },
     signIn() {
-      this.signInAction(this.form.email.value, this.form.password.value);
+      const formData = extractFormData(this.form.fields);
+      return this.signInAction(formData);
     },
     validateForm() {
       this.form.formValidation = validateFormData(this.form);

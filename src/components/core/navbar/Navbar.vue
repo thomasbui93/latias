@@ -14,7 +14,7 @@
       <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item">
           <div class="buttons">
-            <router-link to="/login">
+            <router-link to="/sign-in">
               <a class="button is-primary">
                 <strong>Sign in</strong>
               </a>
