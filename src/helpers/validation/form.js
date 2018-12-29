@@ -43,6 +43,6 @@ export const extractFormData = (fields) => {
   const formData = {};
   fields.forEach((field) => {
     formData[field.name] = field.value;
-  })
+  });
   return formData;
-}
+};

@@ -39,7 +39,7 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex'
+import { mapState, mapActions } from 'vuex';
 import { validateFormData, extractFormData } from '@/helpers/validation/form';
 
 export default {

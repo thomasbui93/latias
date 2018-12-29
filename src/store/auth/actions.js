@@ -4,7 +4,7 @@ function signIn({ commit }, userCredential) {
   commit('requestingAuth', true);
   return new Promise((resolve, reject) => {
     signInRequest(userCredential.email, userCredential.password)
-      .then((data) => {
+      .then(({ data }) => {
         if (data.error) {
           commit('failedAuth', true);
           resolve(false);
@@ -24,8 +24,11 @@ function signIn({ commit }, userCredential) {
 function signUp({ commit }, userInformation) {
   commit('creatingUser', true);
   return new Promise((resolve, reject) => {
-    signUpRequest(userInformation.firstName, userInformation.lastName, userInformation.email, userInformation.password)
-      .then((data) => {
+    signUpRequest(userInformation.firstName,
+      userInformation.lastName,
+      userInformation.email,
+      userInformation.password)
+      .then(({ data }) => {
         if (data.error) {
           commit('failedCreatingUser', true);
           resolve(false);
@@ -44,5 +47,5 @@ function signUp({ commit }, userInformation) {
 
 export default {
   signIn,
-  signUp
+  signUp,
 };

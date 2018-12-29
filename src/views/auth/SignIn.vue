@@ -3,7 +3,7 @@
     <section class="section">
       <div class="container">
         <h1 class="title">Sign in</h1>
-        <h2 
+        <h2
           class="subtitle">
           Please provide your email and password to start managing your applications.
         </h2>
@@ -91,7 +91,7 @@ export default {
       if (this.validateForm()) {
         const isAuthenticated = await this.signIn();
         if (isAuthenticated) {
-          this.$router.push('/home');
+          this.$router.push('/');
         }
       }
     },

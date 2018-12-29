@@ -7,7 +7,7 @@ const state = {
   isSignInError: false,
   isUserCreated: false,
   isCreatingUser: false,
-  isSignUpError: false
+  isSignUpError: false,
 };
 
 export default {

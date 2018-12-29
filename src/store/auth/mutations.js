@@ -11,12 +11,12 @@ export default {
     sessionStorage.setItem('x-refreshToken', authToken.refreshToken);
   },
   creatingUser(state, isCreating) {
-    state.isCreating = isCreating
+    state.isCreating = isCreating;
   },
   failedCreatingUser(state) {
     state.isSignUpError = true;
   },
   doneCreatingUser(state) {
     state.isUserCreated = true;
-  }
+  },
 };
