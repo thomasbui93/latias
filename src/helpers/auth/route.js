@@ -1,4 +1,6 @@
-export const isAuthenticated = () => sessionStorage.getItem('x-token')
-  && sessionStorage.getItem('x-refreshToken');
+import auth from '@/services/constants/auth';
 
 export const unAuthorizedPaths = ['signIn', 'signUp'];
+
+export const isAuthenticated = () => Boolean(sessionStorage.getItem(auth.token)
+  && sessionStorage.getItem(auth.refreshToken));

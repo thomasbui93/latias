@@ -1,3 +1,5 @@
+import { setToken } from '../../services/auth';
+
 export default {
   requestingAuth(state, isRequesting) {
     state.isRequestingAuthentication = isRequesting;
@@ -7,8 +9,7 @@ export default {
   },
   doneAuth(state, authToken) {
     state.isAuthenticated = true;
-    sessionStorage.setItem('x-token', authToken.token);
-    sessionStorage.setItem('x-refreshToken', authToken.refreshToken);
+    setToken(authToken.token, authToken.refreshToken);
   },
   creatingUser(state, isCreating) {
     state.isCreating = isCreating;

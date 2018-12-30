@@ -1,8 +1,8 @@
-<template>
+<template functional>
   <div class="navbar has-shadow is-spaced" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
       <div class="navbar-item">
-        Latias
+        <router-link to="/" class="logo">Latias</router-link>
       </div>
       <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false">
         <span aria-hidden="true"></span>
@@ -14,9 +14,14 @@
       <div class="navbar-end is-hidden-mobile">
         <div class="navbar-item">
           <div class="buttons">
-            <router-link to="/sign-in">
+            <router-link to="/sign-in" v-if="!props.isAuthenticated">
               <a class="button is-primary">
                 <strong>Sign in</strong>
+              </a>
+            </router-link>
+            <router-link to="/logout" v-if="props.isAuthenticated">
+              <a class="button is-primary">
+                <strong>Logout</strong>
               </a>
             </router-link>
           </div>

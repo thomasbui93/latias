@@ -4,6 +4,7 @@ import Buefy from 'buefy';
 import Home from './views/Home.vue';
 import SignIn from './views/auth/SignIn.vue';
 import SignUp from './views/auth/SignUp.vue';
+import SignOut from './views/auth/SignOut.vue';
 import NotFound from './views/NotFound.vue';
 import { isAuthenticated, unAuthorizedPaths } from './helpers/auth/route';
 
@@ -28,6 +29,11 @@ const router = new Router({
       path: '/sign-up',
       name: 'signUp',
       component: SignUp,
+    },
+    {
+      path: '/logout',
+      name: 'signOut',
+      component: SignOut,
     },
     {
       path: '/404',

@@ -8,24 +8,24 @@
     </section>
     <section class="section">
       <form novalidate @submit="submitForm">
-        <div v-for="(item, index) in form.fields" :key="index">
-          <div class="field">
-            <label class="label" v-bind:for="item.name">{{item.label}}</label>
-            <div class="control">
-              <input
-                v-model="item.value"
-                class="input"
-                v-bind:type="item.type"
-                v-bind:placeholder="item.placeholder"
-                v-bind:id="item.name"
-              />
-            </div>
-            <p class="help is-danger" v-if="!item.isValid">{{item.errorMessage}}</p>
+        <div class="field" v-for="(field, index) in form.fields" :key="index">
+          <label class="label" v-bind:for="field.name">{{field.label}}</label>
+          <div class="control">
+            <input
+              v-model="field.value"
+              class="input"
+              v-bind:type="field.type"
+              v-bind:placeholder="field.placeholder"
+              v-bind:id="field.name"
+            >
           </div>
+          <p class="help is-danger" v-if="!field.isValid">{{field.errorMessage}}</p>
         </div>
         <div class="field is-grouped">
           <div class="control">
-            <button class="button is-primary" type="submit">Sign up</button>
+            <button class="button is-primary"
+              :disabled="isCreatingUser"
+              type="submit">Sign up</button>
           </div>
           <div class="control">
             <router-link to="/sign-up">
@@ -111,6 +111,7 @@ export default {
   },
   computed: mapState({
     isError: state => state.auth.isSignUpError,
+    isCreatingUser: state => state.auth.isCreating,
   }),
   methods: {
     ...mapActions({
