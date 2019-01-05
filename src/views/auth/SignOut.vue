@@ -32,8 +32,8 @@ export default {
   methods: mapActions({
     authenticate: 'authenticate',
   }),
-  mounted() {
-    signOut();
+  async mounted() {
+    await signOut();
     this.authenticate(false);
   },
 };

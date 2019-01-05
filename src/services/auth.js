@@ -13,9 +13,15 @@ export const signUp = (firstName, lastName, email, password) => httpClient.post(
   lastName,
 });
 
-export const signOut = () => {
-  sessionStorage.removeItem(auth.token);
-  sessionStorage.removeItem(auth.refreshToken);
+export const signOut = async () => {
+  const data = await httpClient.post('/api/auth/logout', {
+    token: sessionStorage.getItem(auth.token)
+  })
+  if (!data.error) {
+    sessionStorage.removeItem(auth.token);
+    sessionStorage.removeItem(auth.refreshToken);
+  }
+  return !data.error;
 };
 
 export const setToken = (token, refreshToken) => {
