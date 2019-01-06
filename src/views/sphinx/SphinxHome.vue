@@ -1,14 +1,15 @@
 <template>
   <div class="container">
-    <search-app/>
+    <sphinx-doc-search />
   </div>
 </template>
+
 <script>
-import SearchApp from '@/components/home/search/SearchApp.vue';
+import SphinxDocSearch from '@/components/sphinx/SphinxDocSearch.vue';
 
 export default {
   components: {
-    SearchApp,
+    SphinxDocSearch,
   },
 };
 </script>
