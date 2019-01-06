@@ -6,6 +6,7 @@ import SignIn from './views/auth/SignIn.vue';
 import SignUp from './views/auth/SignUp.vue';
 import SignOut from './views/auth/SignOut.vue';
 import NotFound from './views/NotFound.vue';
+import SphinxHome from './views/sphinx/SphinxHome.vue';
 import { isAuthenticated, unAuthorizedPaths } from './helpers/auth/route';
 
 Vue.use(Buefy);
@@ -39,6 +40,11 @@ const router = new Router({
       path: '/404',
       name: 'notFound',
       component: NotFound,
+    },
+    {
+      path: '/sphinx',
+      name: 'sphinx-app',
+      component: SphinxHome,
     },
     {
       path: '*',
