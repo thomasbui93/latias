@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavTip component matches snapshot 1`] = `
+<router-link-stub path="/" backgroundimage="/sample.jpg" name="Latias">
+  <div class="nav-tip">
+    <div class="nav-tip__background"><img></div>
+    <div class="nav-tip__text"><span></span></div>
+  </div>
+</router-link-stub>
+`;

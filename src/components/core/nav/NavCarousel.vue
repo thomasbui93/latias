@@ -19,6 +19,7 @@ import NavTip from './NavTip.vue';
 import navTips from '@/services/constants/nav';
 
 export default {
+  name: 'NavCarousel',
   components: {
     NavTip,
   },
