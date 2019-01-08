@@ -15,12 +15,12 @@
         <div class="navbar-item">
           <div class="buttons">
             <router-link to="/sign-in" v-if="!props.isAuthenticated">
-              <a class="button is-primary">
+              <a class="button is-primary login">
                 <strong>Sign in</strong>
               </a>
             </router-link>
             <router-link to="/logout" v-if="props.isAuthenticated">
-              <a class="button is-primary">
+              <a class="button is-primary logout">
                 <strong>Logout</strong>
               </a>
             </router-link>

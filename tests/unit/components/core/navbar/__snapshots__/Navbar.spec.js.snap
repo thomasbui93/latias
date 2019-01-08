@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component matches snapshot 1`] = `
+<div role="navigation" aria-label="main navigation" class="navbar has-shadow is-spaced" isauthenticated="true">
+  <div class="navbar-brand">
+    <div class="navbar-item">
+      <router-link-stub to="/" class="logo">Latias</router-link-stub>
+    </div> <a role="button" aria-label="menu" aria-expanded="false" class="navbar-burger burger"><span aria-hidden="true"></span> <span aria-hidden="true"></span> <span aria-hidden="true"></span></a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-end is-hidden-mobile">
+      <div class="navbar-item">
+        <div class="buttons">
+          <router-link-stub to="/sign-in"><a class="button is-primary login"><strong>Sign in</strong></a></router-link-stub>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

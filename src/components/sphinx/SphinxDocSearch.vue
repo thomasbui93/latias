@@ -91,10 +91,12 @@ export default {
       } else {
         this.searchState.keywords.push(keyword);
       }
+      this.performSearch();
     },
     onToggleLevel(level) {
       this.searchState.level = this.searchState.level === level
         ? undefined : level;
+      this.performSearch();
     },
   },
   async mounted() {
