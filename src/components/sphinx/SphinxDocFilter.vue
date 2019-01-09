@@ -104,6 +104,8 @@
 </style>
 
 <script>
+import toggleFilter from '@/mixins/sphinx/toggleFilter';
+
 export default {
   name: 'SphinxDocFilter',
   props: {
@@ -152,5 +154,6 @@ export default {
       this.$emit('toggleLevel', this.value.level);
     },
   },
+  mixins: [toggleFilter],
 };
 </script>

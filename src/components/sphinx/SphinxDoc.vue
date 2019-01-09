@@ -46,6 +46,8 @@
 </style>
 
 <script>
+import toggleFilter from '@/mixins/sphinx/toggleFilter';
+
 export default {
   name: 'SphinxDoc',
   props: {
@@ -74,13 +76,6 @@ export default {
       default: '',
     },
   },
-  methods: {
-    toggleKeyword(keyword) {
-      this.$emit('toggleKeyword', keyword);
-    },
-    toggleLevel() {
-      this.$emit('toggleLevel', this.level);
-    },
-  },
+  mixins: [toggleFilter],
 };
 </script>
