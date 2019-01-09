@@ -3,31 +3,34 @@
     <div class="sphinx-doc__title">{{question}}</div>
     <div class="sphinx-doc__content">
       <div class="sphinx-doc__keywords">
-        <div class="sphinx-tag"
-        v-for="(keyword, index) in keywords" :key="index" @click="toggleKeyword(keyword)">
-          {{keyword}}
-        </div>
+        <div
+          class="sphinx-tag"
+          v-for="(keyword, index) in keywords"
+          :key="index"
+          @click="toggleKeyword(keyword)"
+        >{{keyword}}</div>
       </div>
       <div class="sphinx-doc__category">
-        <strong>Category: </strong><span>{{categories}}</span>
+        <strong>Category:</strong>
+        <span>{{categories}}</span>
       </div>
       <div class="sphinx-doc__level">
-        <strong>Level: </strong><span class="is-lowercase" @click="toggleLevel">{{level}}</span>
+        <strong>Level:</strong>
+        <span class="is-lowercase" @click="toggleLevel">{{level}}</span>
       </div>
       <div class="sphinx-doc__description">
-        <strong>Answer: </strong>{{answer}}
+        <strong>Answer:</strong>
+        {{answer}}
       </div>
-      <div class="sphinx-doc__meta">
-        Added: {{ createdAt | dateNormalized }}
-      </div>
+      <div class="sphinx-doc__meta">Added: {{ createdAt | dateNormalized }}</div>
     </div>
   </div>
 </template>
 
 <style lang="scss">
 .sphinx-doc {
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 
   &__title {
     position: relative;
@@ -44,6 +47,7 @@
 
 <script>
 export default {
+  name: 'SphinxDoc',
   props: {
     question: {
       type: String,

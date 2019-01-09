@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SphinxDocFilter component match snapshot 1`] = `
+<div class="sphinx-search">
+  <div class="sphinx-search__field-group">
+    <div class="sphinx-search__field"><input type="text" placeholder="What are you searching for?" class="input"></div>
+    <div class="sphinx-search__field">
+      <div class="select"><select>
+          <option value="ASC">A-Z</option>
+          <option value="DESC">Z-A</option>
+        </select></div>
+      <div class="select"><select>
+          <option value="createdAt">Date</option>
+          <option value="question">Question</option>
+          <option value="level">Level</option>
+        </select></div>
+    </div>
+  </div>
+  <div class="sphinx-search__field">
+    <div class="sphinx-tag">
+      keyword1
+      <span class="sphinx-tag__close">-</span></div>
+    <div class="sphinx-tag">
+      keyword2
+      <span class="sphinx-tag__close">-</span></div> <span class="sphinx-tag sphinx-level">ADVANCED</span>
+  </div>
+  <div class="sphinx-search__field-action"><button class="button is-primary">Search</button></div>
+</div>
+`;

@@ -1,17 +1,19 @@
 <template>
   <div class="sphinx-doc__container">
-    <sphinx-filter v-model="searchState"
+    <sphinx-filter
+      v-model="searchState"
       @input="performSearch"
       @toggleKeyword="onToggleKeyword"
       @toggleLevel="onToggleLevel"
-      />
+    />
     <div class="sphinx-doc__list-container">
       <div v-if="isError" class="has-text-danger">Error happened!</div>
       <Loading v-if="isLoading"/>
       <div v-if="isEmpty">There is no result related to your search.</div>
       <div class="sphinx-doc__list" v-if="!isError && !isLoading">
         <sphinx-doc
-          v-for="(doc, index) in documents" :key="index"
+          v-for="(doc, index) in documents"
+          :key="index"
           v-bind="doc"
           @toggleKeyword="onToggleKeyword"
           @toggleLevel="onToggleLevel"
@@ -21,29 +23,29 @@
   </div>
 </template>
 <style lang="scss">
-  .sphinx-tag {
-    background-color: $primary;
-    padding: .25rem;
-    border-radius: $global-radius;
-    color: $primary-invert;
-    display: inline-block;
-    margin-right: .25rem;
-    margin-bottom: .25rem;
-    cursor: pointer;
-    transition: all 0.1s ease-in-out;
+.sphinx-tag {
+  background-color: $primary;
+  padding: 0.25rem;
+  border-radius: $global-radius;
+  color: $primary-invert;
+  display: inline-block;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
 
-    &__close {
-      display: none;
-    }
-
-    &:hover {
-      background-color: darken($color: $primary, $amount: 2);
-    }
-
-    &:hover &__close {
-      display: inline-block
-    }
+  &__close {
+    display: none;
   }
+
+  &:hover {
+    background-color: darken($color: $primary, $amount: 2);
+  }
+
+  &:hover &__close {
+    display: inline-block;
+  }
+}
 </style>
 
 <script>
@@ -52,6 +54,7 @@ import SphinxFilter from './SphinxDocFilter.vue';
 import SphinxDoc from './SphinxDoc.vue';
 
 export default {
+  name: 'SphinxDocSearch',
   data() {
     return {
       searchState: {
@@ -94,8 +97,7 @@ export default {
       this.performSearch();
     },
     onToggleLevel(level) {
-      this.searchState.level = this.searchState.level === level
-        ? undefined : level;
+      this.searchState.level = this.searchState.level === level ? undefined : level;
       this.performSearch();
     },
   },
