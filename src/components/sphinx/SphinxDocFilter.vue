@@ -30,7 +30,13 @@
         {{keyword}}
         <span class="sphinx-tag__close">-</span>
       </div>
-      <span class="sphinx-tag" v-if="value.level" @click="toggleLevel">{{value.level}}</span>
+      <span
+        class="sphinx-tag sphinx-level"
+        v-if="value.level"
+        @click="toggleLevel"
+        >
+        {{value.level}}
+      </span>
     </div>
     <div class="sphinx-search__field-action">
       <button class="button is-primary" @click="triggerChange">Search</button>
@@ -39,66 +45,67 @@
 </template>
 
 <style lang="scss">
-  .sphinx-search {
-    &__field {
-      display: flex;
-      margin: .5rem 0;
+.sphinx-search {
+  &__field {
+    display: flex;
+    margin: 0.5rem 0;
+  }
+
+  &__field-action button {
+    width: 100%;
+  }
+
+  .select {
+    width: 50%;
+
+    &:first-child {
+      margin-right: 0.5rem;
     }
 
-    &__field-action button {
+    &:last-child {
+      margin-left: 0.5rem;
+    }
+
+    select {
       width: 100%;
     }
+  }
+}
 
-    .select {
-      width: 50%;
+@include from($tablet) {
+  .sphinx-search {
+    margin-bottom: 0.5rem;
 
+    &__field-group {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__field-group &__field {
       &:first-child {
-        margin-right: 0.5rem;
+        width: calc(75% - 0.25rem);
       }
 
       &:last-child {
-        margin-left: 0.5rem;
+        width: calc(25% - 0.25rem);
       }
+    }
 
-      select {
-        width: 100%;
+    &__field-action {
+      display: flex;
+      justify-content: flex-end;
+
+      button {
+        width: auto;
       }
     }
   }
-
-  @include from($tablet) {
-    .sphinx-search {
-      margin-bottom: .5rem;
-
-      &__field-group {
-        display: flex;
-        justify-content: space-between;
-      }
-
-      &__field-group &__field {
-        &:first-child {
-          width: calc(75% - .25rem);
-        }
-
-        &:last-child {
-          width: calc(25% - .25rem);
-        }
-      }
-
-      &__field-action {
-        display: flex;
-        justify-content: flex-end;
-
-        button {
-          width: auto;
-        }
-      }
-    }
-  }
+}
 </style>
 
 <script>
 export default {
+  name: 'SphinxDocFilter',
   props: {
     value: {
       type: Object,
@@ -142,7 +149,7 @@ export default {
       this.$emit('toggleKeyword', keyword);
     },
     toggleLevel() {
-      this.$emit('toggleLevel', this.level);
+      this.$emit('toggleLevel', this.value.level);
     },
   },
 };
