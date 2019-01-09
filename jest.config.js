@@ -25,4 +25,5 @@ module.exports = {
     'src/**/*.{js,vue}',
     '!**/node_modules/**',
   ],
+  timers: 'fake',
 };
