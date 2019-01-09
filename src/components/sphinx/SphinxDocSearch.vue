@@ -8,9 +8,9 @@
     />
     <div class="sphinx-doc__list-container">
       <div v-if="isError" class="has-text-danger">Error happened!</div>
-      <Loading v-if="isLoading"/>
+      <Loading v-if="isInProgress"/>
       <div v-if="isEmpty">There is no result related to your search.</div>
-      <div class="sphinx-doc__list" v-if="!isError && !isLoading">
+      <div class="sphinx-doc__list" v-if="!isError && !isInProgress">
         <sphinx-doc
           v-for="(doc, index) in documents"
           :key="index"
@@ -70,10 +70,10 @@ export default {
     ...mapState({
       documents: state => state.sphinx.documents,
       isError: state => state.sphinx.isError,
-      isLoading: state => state.sphinx.isInProgress,
+      isInProgress: state => state.sphinx.isInProgress,
     }),
     isEmpty() {
-      return this.documents.length === 0 && !this.isLoading;
+      return this.documents.length === 0;
     },
   },
   components: {
