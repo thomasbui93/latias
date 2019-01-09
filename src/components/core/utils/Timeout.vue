@@ -15,9 +15,10 @@ export default {
     };
   },
   mounted() {
+    const self = this;
     const countdown = setInterval(() => {
-      if (this.timeLeft > 0) {
-        this.timeLeft = this.timeLeft - 1;
+      if (self.timeLeft > 0) {
+        self.timeLeft -= 1;
       } else {
         clearInterval(countdown);
       }
