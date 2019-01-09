@@ -22,7 +22,9 @@ exports[`SphinxDocFilter component match snapshot 1`] = `
       <span class="sphinx-tag__close">-</span></div>
     <div class="sphinx-tag">
       keyword2
-      <span class="sphinx-tag__close">-</span></div> <span class="sphinx-tag sphinx-level">ADVANCED</span>
+      <span class="sphinx-tag__close">-</span></div> <span class="sphinx-tag sphinx-level">
+      ADVANCED
+    </span>
   </div>
   <div class="sphinx-search__field-action"><button class="button is-primary">Search</button></div>
 </div>

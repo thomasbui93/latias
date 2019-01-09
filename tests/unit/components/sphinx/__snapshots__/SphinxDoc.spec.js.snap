@@ -5,20 +5,15 @@ exports[`SphinxDoc component match snapshot 1`] = `
   <div class="sphinx-doc__title">test question</div>
   <div class="sphinx-doc__content">
     <div class="sphinx-doc__keywords">
-      <div class="sphinx-tag">
-        keyword1
-      </div>
-      <div class="sphinx-tag">
-        keyword2
-      </div>
+      <div class="sphinx-tag">keyword1</div>
+      <div class="sphinx-tag">keyword2</div>
     </div>
-    <div class="sphinx-doc__category"><strong>Category: </strong><span>category</span></div>
-    <div class="sphinx-doc__level"><strong>Level: </strong><span class="is-lowercase">BEGINER</span></div>
-    <div class="sphinx-doc__description"><strong>Answer: </strong>answer
+    <div class="sphinx-doc__category"><strong>Category:</strong> <span>category</span></div>
+    <div class="sphinx-doc__level"><strong>Level:</strong> <span class="is-lowercase">BEGINER</span></div>
+    <div class="sphinx-doc__description"><strong>Answer:</strong>
+      answer
     </div>
-    <div class="sphinx-doc__meta">
-      Added: 2019-01-09
-    </div>
+    <div class="sphinx-doc__meta">Added: 2019-01-09</div>
   </div>
 </div>
 `;
