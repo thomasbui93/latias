@@ -6,23 +6,35 @@
       @toggleKeyword="onToggleKeyword"
       @toggleLevel="onToggleLevel"
     />
-    <div class="sphinx-doc__list-container">
-      <div v-if="isError" class="has-text-danger">Error happened!</div>
-      <Loading v-if="isInProgress"/>
-      <div v-if="isEmpty">There is no result related to your search.</div>
-      <div class="sphinx-doc__list" v-if="!isError && !isInProgress">
-        <sphinx-doc
-          v-for="(doc, index) in documents"
-          :key="index"
-          v-bind="doc"
-          @toggleKeyword="onToggleKeyword"
-          @toggleLevel="onToggleLevel"
-        />
-      </div>
-    </div>
+    <loading-list
+      :className="sphinx-doc__list-container"
+      :isLoading="isInProgress"
+      :isError="isError"
+      :items="documents"
+    >
+      <template slot="error">
+        <p>Error happened while showing the documents. Please try again!.</p>
+      </template>
+      <template slot="empty">
+        <p>No result is matched with the query. Please try again!.</p>
+      </template>
+      <template slot="loader">
+        <div>
+          <p>Please wait a minute while we fetching the data.</p>
+          <Loading/>
+        </div>
+      </template>
+      <template slot-scope="{ item }">
+        <sphinx-doc v-bind="item" @toggleKeyword="onToggleKeyword" @toggleLevel="onToggleLevel"/>
+      </template>
+    </loading-list>
   </div>
 </template>
 <style lang="scss">
+.sphinx-search {
+  margin-top: 1rem;
+}
+
 .sphinx-tag {
   background-color: $primary;
   padding: 0.25rem;
@@ -52,6 +64,7 @@
 import { mapActions, mapState } from 'vuex';
 import SphinxFilter from './SphinxDocFilter.vue';
 import SphinxDoc from './SphinxDoc.vue';
+import LoadingList from '../core/list/LoadingList.vue';
 
 export default {
   name: 'SphinxDocSearch',
@@ -63,22 +76,19 @@ export default {
         sortBy: 'createdAt',
         sortType: 'ASC',
         level: '',
+        page: 1,
       },
     };
   },
-  computed: {
-    ...mapState({
-      documents: state => state.sphinx.documents,
-      isError: state => state.sphinx.isError,
-      isInProgress: state => state.sphinx.isInProgress,
-    }),
-    isEmpty() {
-      return this.documents.length === 0;
-    },
-  },
+  computed: mapState({
+    documents: state => state.sphinx.documents,
+    isError: state => state.sphinx.isError,
+    isInProgress: state => state.sphinx.isInProgress,
+  }),
   components: {
     SphinxFilter,
     SphinxDoc,
+    LoadingList,
   },
   methods: {
     ...mapActions({
@@ -101,8 +111,8 @@ export default {
       this.performSearch();
     },
   },
-  async mounted() {
-    await this.performSearch();
+  created() {
+    this.performSearch();
   },
 };
 </script>

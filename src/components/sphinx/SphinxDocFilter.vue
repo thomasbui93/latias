@@ -95,7 +95,7 @@
       display: flex;
       justify-content: flex-end;
 
-      button {
+      .button {
         width: auto;
       }
     }
