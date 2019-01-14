@@ -7,7 +7,7 @@
       @toggleLevel="onToggleLevel"
     />
     <loading-list
-      :className="sphinx-doc__list-container"
+      className="sphinx-doc__list-container"
       :isLoading="isInProgress"
       :isError="isError"
       :items="documents"
@@ -28,6 +28,16 @@
         <sphinx-doc v-bind="item" @toggleKeyword="onToggleKeyword" @toggleLevel="onToggleLevel"/>
       </template>
     </loading-list>
+    <list-pagination :value="searchState.page" :lastPage="1">
+      <button
+        slot-scope="{setPage, isLastPage, page}"
+        v-if="!isLastPage"
+        @click="setPage(page+1)"
+        class="button is-primary"
+        >
+        Load More
+      </button>
+    </list-pagination>
   </div>
 </template>
 <style lang="scss">
@@ -65,6 +75,7 @@ import { mapActions, mapState } from 'vuex';
 import SphinxFilter from './SphinxDocFilter.vue';
 import SphinxDoc from './SphinxDoc.vue';
 import LoadingList from '../core/list/LoadingList.vue';
+import ListPagination from '../core/list/ListPagination.vue';
 
 export default {
   name: 'SphinxDocSearch',
@@ -89,6 +100,7 @@ export default {
     SphinxFilter,
     SphinxDoc,
     LoadingList,
+    ListPagination,
   },
   methods: {
     ...mapActions({

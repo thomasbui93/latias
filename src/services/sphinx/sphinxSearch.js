@@ -1,10 +1,22 @@
 import httpClient from '../core/http';
 
-// eslint-disable-next-line import/prefer-default-export
+export const getDefaultParams = () => ({
+  page: 1,
+  limit: 1,
+  text: '',
+  level: '',
+  keywords: '',
+  sortType: 'ASC',
+  sortBy: 'createdAt',
+});
+
 export const searchService = async (filter) => {
   try {
     const response = await httpClient.get('/api/sphinx', {
-      params: filter || {},
+      params: {
+        ...getDefaultParams(),
+        ...filter,
+      },
     });
     return response.data;
   } catch (err) {

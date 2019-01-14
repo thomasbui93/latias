@@ -2,13 +2,12 @@
   <div class="generic-list__container" :class="{[className]: true}">
     <slot name="loader" v-if="isLoading" />
     <slot name="error" v-if="isError" />
-    <slot name="empty" v-if="isEmpty" />
+    <slot name="empty" v-if="isEmpty && !isLoading" />
     <ul class="generic-list" v-if="!isLoading && !isEmpty && !isError">
-      <slot
-        v-for="(item, index) in items"
-        :key="index"
-        v-bind="item"
-      />
+      <li v-for="(item, index) in items"
+        :key="index">
+        <slot v-bind:item="item"/>
+      </li>
     </ul>
   </div>
 </template>
